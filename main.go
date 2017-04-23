@@ -65,6 +65,8 @@ func main() {
 func (d *VehicleDataFinal) ServeHTTP(res http.ResponseWriter, req *http.Request) {
 	dataBytes, err := json.Marshal(d)
 	if err != nil {
+		res.Header().Set("Access-Control-Allow-Origin", "*")
+		res.Header().Set("Content-Type", "application/json")
 		res.Write([]byte(""))
 		return
 	}
